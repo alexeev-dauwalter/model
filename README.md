@@ -20,7 +20,7 @@ Go to the project directory
 
 ```js
 const <YourNameNewModelClass> = Model({
-    <propertie>: {
+    <property>: {
         type: function,
         [set: boolean],     // default true
         [get: boolean],     // default true
