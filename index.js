@@ -1,25 +1,55 @@
-function Model(objectKeys) {
-  class NewModel {
-    constructor(...args) {
-      let index = 0;
+function Model(args) {
+  const primitives = ['string', 'number', 'boolean'],
+    typeParams = {
+      type: 'function',
+      set: 'boolean',
+      get: 'boolean',
+      required: 'boolean'
+    };
 
-      for (let argument in objectKeys) {
-        this[`#${argument}`] = args[index++];
-      }
+
+  for (let key in args) {
+    for (let param in args[key]) {
+      if (
+        args[key][param] !== undefined &&
+        typeof args[key][param] !== typeParams[param]
+      ) throw new Error(`\`${param}\` must be \`${typeParams[param]}\` or \`undefined\` in \`${key}\``);
     }
   }
 
-  const defineObject = {};
-  for (let argument in objectKeys) {
-    defineObject[argument] = {
-      get() {
-        return this[`#${argument}`];
-      },
+  class NewModel {
+    constructor(props) {
+      for (let key in args) {
+        if (
+          primitives.indexOf(args[key].type.name.toLowerCase()) === -1 &&
+          args[key].required === false
+        ) throw new Error(`\`${key}\` cannot be required because \`${args[key].type.name}\` is non-primitive`);
 
-      set(value) {
-        if (typeof value !== objectKeys[argument]) throw new Error(`\`${argument}\` must be \`${objectKeys[argument]}\``);
-        this[`#${argument}`] = value;
+        if (
+          args[key].required === true &&
+          props[key] === undefined
+        ) throw new Error(`\`${key}\` is required`);
+
+        this[key] = props[key];
       }
+    }
+  };
+
+  const defineObject = {};
+  for (let key in args) {
+    defineObject[key] = {};
+
+    if (args[key].set) defineObject[key].set = function (value) {
+      if (
+        typeof value !== args[key].type.name.toLowerCase() &&
+        !(value instanceof args[key].type)
+      ) throw new Error(`\`${key}\` must be \`${args[key].type.name.toLowerCase()}\``);
+
+      this[`#${key}`] = value;
+    };
+
+    if (args[key].get) defineObject[key].get = function () {
+      return this[`#${key}`];
     };
   }
   Object.defineProperties(NewModel.prototype, defineObject);
