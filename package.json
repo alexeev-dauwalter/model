@@ -1,0 +1,14 @@
+{
+  "name": "model",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Ishi-Inanis/model.git",
+  "author": "Ishi Inanis <ishi.inanis@gmail.com>",
+  "contributors": [
+    {
+      "name": "Pavel Mankoshev",
+      "email": "pashamanko228@gmail.com"
+    }
+  ],
+  "license": "MIT"
+}
