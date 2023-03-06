@@ -30,7 +30,7 @@ function Model(args) {
           props[key] === undefined
         ) throw new Error(`\`${key}\` is required`);
 
-        this[key] = props[key];
+        this[props[key].set ? key : `#${key}`] = props[key];
       }
     }
   };
