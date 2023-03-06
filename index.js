@@ -5,6 +5,11 @@ function Model(args) {
       set: 'boolean',
       get: 'boolean',
       required: 'boolean'
+    },
+    defaultParams = {
+      set: true,
+      get: true,
+      required: false
     };
 
 
@@ -14,6 +19,8 @@ function Model(args) {
         args[key][param] !== undefined &&
         typeof args[key][param] !== typeParams[param]
       ) throw new Error(`\`${param}\` must be \`${typeParams[param]}\` or \`undefined\` in \`${key}\``);
+      
+      args[key] = Object.assign(defaultParams, args[key]);
     }
   }
 
