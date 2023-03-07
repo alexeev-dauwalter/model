@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A small project for simplified creation of classes with protected properties.",
   "main": "index.js",
+  "type": "module",
   "repository": "https://github.com/Ishi-Inanis/model.git",
   "author": "Ishi Inanis <ishi.inanis@gmail.com>",
   "contributors": [

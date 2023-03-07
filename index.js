@@ -1,4 +1,4 @@
-function Model(args) {
+export default function Model(args) {
   const primitives = ['string', 'number', 'boolean'],
     typeParams = {
       type: 'function',
