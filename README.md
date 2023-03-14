@@ -63,8 +63,8 @@ console.log(new Test({ name: '', num: 0 }));
 
 ## Roadmap
 
- * [] Add all primitive type support
- * [] Add unit tests
+ * [ ] Add all primitive type support
+ * [ ] Add unit tests
 
 
 ## License
