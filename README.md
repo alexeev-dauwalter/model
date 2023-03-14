@@ -69,4 +69,4 @@ console.log(new Test({ name: '', num: 0 }));
 
 ## License
 
-[MIT](https://github.com/Ishi-Inanis/model/blob/main/LICENSE.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Ishi-Inanis/model/blob/main/LICENSE.md)
