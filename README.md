@@ -1,3 +1,5 @@
+![41t: official](https://img.shields.io/badge/41t-official-%23FBBF24)
+
 # Model
 
 A small project for simplified creation of classes with protected properties.
